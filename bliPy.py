@@ -2,7 +2,7 @@
 
 import time, sys, os, subprocess
 
-path = '/home/diogo/i386/blink1/commandline/blink1-tool'
+path = '/path/to/blink1/commandline/blink1-tool'
 cmd_on = ' --on'
 cmd_off = ' --off'
 cmd_fade = ' -m '
