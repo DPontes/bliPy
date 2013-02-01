@@ -3,7 +3,7 @@ bliPy
 
 #A Python wrapper for thingM's blink(1) USB RGB LED
 
-Example code:
+Example code
 
   import bliPy
   interval = 1.75
