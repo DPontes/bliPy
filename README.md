@@ -6,7 +6,9 @@ Remember to change the value of 'path' in the bliPy.py file to suit your case.
 
 Example Python code:
  import bliPy
- bl1 = bliPy.Blink1
- bl1.breath()
- You'll see your blink(1) 'breathing' similar to the Macbooks led
+ interval = 1.75
+ bl1 = bliPy.Blink1()
+ bl1.breath(interval)
+
+You'll see your blink(1) 'breathing' one cycle similar to the Macbooks led with a white light
 
