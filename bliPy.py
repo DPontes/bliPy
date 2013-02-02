@@ -20,21 +20,29 @@ opt_timing  = ' -t ' # written in milliseconds
 
 time_interval = 1.75
 
+
+def emitCommand(command):
+
+    output = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+    output = output.stdout.read()
+    return output
+
+
 class Blink1:
 
-	def __init__(self):
-		output = subprocess.Popen(path + cmd_list, stdout=subprocess.PIPE, shell=True)
-		output = output.stdout.read()
-		if (output[:2] == 'no'):
-			raise NameError('No blink1 Device Found!')
+    def __init__(self):
+        output = emitCommand(path + cmd_list)
+        if (output[:2] == 'no'):
+		    raise NameError('No blink1 Device Found!')
 
-	def breath(self, interval):
+    def breath(self, interval):
+
 		command = path + opt_fade + str(interval * 1000) + cmd_off
-		subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+		emitCommand(command)
 		time.sleep(interval)
 
 		command = path + opt_fade + str(interval * 1000) + cmd_on
-		subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+		emitCommand(command)
 		time.sleep(interval)
 
 
@@ -44,3 +52,6 @@ if __name__ == '__main__':
 
 	while 1:
 		bl1.breath(time_interval)
+
+
+
