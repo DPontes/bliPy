@@ -18,8 +18,6 @@ cmd_version = ' --version'
 opt_fade    = ' -m ' # written in milliseconds
 opt_timing  = ' -t ' # written in milliseconds
 
-time_interval = 1.75
-
 
 def emitCommand(command):
 
@@ -35,23 +33,28 @@ class Blink1:
         if (output[:2] == 'no'):
 		    raise NameError('No blink1 Device Found!')
 
-    def breath(self, interval):
+    def breath(self, interval, rgb = None):
+        command = path + opt_fade + str(interval * 1000) + cmd_off
+        emitCommand(command)
+        time.sleep(interval)
+        if(rgb != None):
+            color = ','.join(str(x) for x in rgb)
+            command = path + opt_fade + str(interval * 1000) + cmd_rgb + color
+        else:
+		    command = path + opt_fade + str(interval * 1000) + cmd_on
 
-		command = path + opt_fade + str(interval * 1000) + cmd_off
-		emitCommand(command)
-		time.sleep(interval)
-
-		command = path + opt_fade + str(interval * 1000) + cmd_on
-		emitCommand(command)
-		time.sleep(interval)
+        emitCommand(command)
+        time.sleep(interval)
 
 
 if __name__ == '__main__':
 
-	bl1 = Blink1()	
+    bl1 = Blink1()	
 
-	while 1:
-		bl1.breath(time_interval)
+    time_interval = 1.75
+
+    while 1:
+        bl1.breath(time_interval)
 
 
 
