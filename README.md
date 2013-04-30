@@ -11,3 +11,5 @@ Example code
     bl1.breath(interval)
 
 You will see blink(1) 'breathing' like the Macbook presence LED
+
+# Follow the instructions inside '51-blink1.rules' files
